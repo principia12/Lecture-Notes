@@ -1,5 +1,6 @@
 \documentclass[twoside]{article}
-
+\usepackage{import}
+\usepackage{kotex}
 \usepackage{lipsum} % Package to generate dummy text throughout this template
 
 \usepackage[sc]{mathpazo} % Use the Palatino font
@@ -130,7 +131,7 @@
 %----------------------------------------------------------------------------------------
 
 \HRule \\[0.4cm]
-{ \huge \bfseries Machine Learning and Artificial Intelligence}\\[0.4cm] % Title of your document
+{ \huge \bfseries Deep learning specialization}\\[0.4cm] % Title of your document
 \HRule \\[1.5cm]
  
 %----------------------------------------------------------------------------------------
@@ -181,8 +182,8 @@ Seungwoo \textsc{Schin} % Supervisor's Name
 \tableofcontents
 \newpage
 
-\input{introduction}
-
+%\input{introduction}
+\import{Deep Learning Specialization/}{introduction.tex}
 \end{document}
 
 
