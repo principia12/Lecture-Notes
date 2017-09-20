@@ -1,0 +1,93 @@
+\newtheorem{theorem}{Theorem}
+
+\section{Course 1 Week 2. Neural network basics} In this week, logistic regression using machine learning and the efficient python code to implement it are introduced. 
+
+\subsection{Logistic Regression as a Neural Network} In this section, we introduce binary classification, one of the most popular application of deep neural network, and how it can be mathematically formulated as machine learning problem called logistic regression problem. After then, we see how gradient descent, which is one of the most basic and popular technique in machine learning domain, can be conceptually applied to solve this kind of problem. Mathematical details are not yet covered in this section.
+
+\paragraph{Binary classification Problem} Given input, our goal is to classify it into two categories. For example, we might want to classify a RGB pixel image into cat or non-cat. More specifically, the output of binary classifier is any real number between 0 and 1.
+
+\begin{figure}[H]
+\centering
+\includegraphics[height=3.2cm]{c1w2s1_pic1.png}
+\caption{}
+\end{figure}
+
+Now suppose that we can express one input as n x 1 column vector x. Mathematically, this problem can be expressed as following:\newline
+The set of m training examples can be expressed by input matrix \newline
+\begin{equation}
+X = 
+    \begin{bmatrix}
+        | & | &  & | \\
+        x^{(1)} & x^{(2)} & \cdots & x^{(m)} \\
+        | & | &  & |
+    \end{bmatrix}
+\end{equation}
+
+and output matrix
+
+\begin{equation}
+Y = 
+    \begin{bmatrix}
+        y^{(1)}  & y^{(2)} & \cdots & y^{(m)} \\
+
+    \end{bmatrix}
+\end{equation}
+
+A perfect binary classifier f satisfies the following equation.
+\begin{equation}
+f(X) = Y
+\end{equation}
+
+
+
+\paragraph{Logistic regression} One way to set f is like this : 
+\begin{equation}
+f(X) = \sigma(w^TX + b)
+\end{equation}
+where $\sigma$ denotes a function represented as
+
+
+\begin{equation} 
+\sigma(z) = \frac{1}{1 + e^{-z}}
+\end{equation}
+
+This function f is called a logistic equation, and a problem of finding a "appropriate" W and b value is called logistic regression problem.
+
+\paragraph{Cost function} Then what is the criteria for "appropriateness" of W and b value? One way of formulating this concept is using a function called "Cost function". There can be many ways of defining cost function, but normally it is expressed as 
+
+\begin{equation} 
+    \mathcal{J}(w, b)
+\end{equation}
+
+The standard Cost function $\mathcal{J}$ we use for logistic regression problem can be derived as follows.
+
+Note that for y = 1 case we want $\hat{y}$ be as close as 1 and for y = 0 case we want $\hat{y}$ be as close as 0. This requirement for  $\hat{y}$ can be satisfied by the following problem:
+
+\begin{equation} 
+    minimize \: \: \hat{y}^y(1-\hat{y})^{(1-y)} 
+\end{equation}
+
+For m data training examples case, problem above becomes: 
+
+\begin{equation} 
+    minimize \: \: \prod_{i = 1}^{m} {\hat{y}^{(i)}}^{y^{(i)}}{(1-\hat{y}^{(i)})}^{(1-y^{(i)})} 
+\end{equation}
+
+Taking log of this equation, i.e. log likelihood of logistic regression, give us following well-known cost function :
+
+\begin{equation} \label{cost_function}
+    miminize \: \: \sum_{i=1}^{m} y^{(i)}\log{{\hat{y}}^{(i)}} + (1-y^{(i)})\log{(1-{\hat{y}}^{(i)})}
+\end{equation}
+
+Beauty part of this is that, if you substitute $\hat{y}^{(i)}$ by $\sigma(w^TX + b)$, then what we can see is the convexity of above equation in all ws. This convexity in the loss function gives us really convenient fact : 
+
+\begin{theorem}\label{thm:py}
+A convex function's local minimum is the global minimum.
+\end{theorem}
+
+\paragraph{Gradient descent} We skip the explanation of this concept.
+
+\paragraph{Logistic regression using Gradient descent} We saw that gradient descent algorithm finds the global optimum of convex optimization problem. Application of gradient descent to logistic regression problem is quiet straightforward. 
+
+
+
